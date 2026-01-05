@@ -4,16 +4,41 @@
   <meta charset="UTF-8">
   <title>IUBA</title>
 
-  <!-- Redirect -->
-  <meta http-equiv="refresh" content="0; url=https://iubabd.org/">
-
-  <!-- App Icon -->
-  <link rel="icon" href="logo.png">
-  <link rel="apple-touch-icon" href="logo.png">
-
-  <!-- Mobile Friendly -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Icons -->
+  <link rel="icon" href="icon-512.png">
+  <link rel="apple-touch-icon" href="icon-512.png">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+    }
+  </style>
 </head>
 <body>
+
+  <img src="icon-512.png" width="150" alt="IUBA Logo">
+
+  <script>
+    // Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+
+    // Redirect to main website
+    setTimeout(() => {
+      window.location.href = "https://iubabd.org/";
+    }, 1500);
+  </script>
+
 </body>
 </html>
