@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,18 +15,22 @@
       margin: 0;
       height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       font-family: Arial, sans-serif;
       background: #fff;
     }
+
     .box {
       text-align: center;
     }
+
     img {
       width: 120px;
       margin-bottom: 20px;
     }
+
     button {
       padding: 12px 20px;
       font-size: 16px;
@@ -35,15 +40,31 @@
       border-radius: 6px;
       cursor: pointer;
     }
+
+    marquee {
+      background: #833AB4;
+      background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+      color: white;
+      margin-top: 20px;
+      padding: 20px;
+      font-size: 25px;
+    }
   </style>
 </head>
+
 <body>
+
 
   <div class="box">
     <img src="icon-192.png" alt="IUBA Logo">
-    <h3>IUBA App</h3>
+    <h3>IUBA App Download</h3>
     <p>Install the app or continue to website</p>
     <button onclick="go()">Open Website</button>
+  </div>
+
+  <div>
+
+    <marquee behavior="" direction="">IUBA App ডাউনলোড করতে “Install App / Add to Home Screen” অপশন সিলেক্ট করুন। এরপর Install বাটনে ক্লিক করুন। আমাদের সাথে থাকার জন্য ধন্যবাদ। </marquee>
   </div>
 
   <script>
@@ -57,4 +78,5 @@
   </script>
 
 </body>
+
 </html>
