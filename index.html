@@ -17,20 +17,33 @@
       align-items: center;
       justify-content: center;
       font-family: Arial, sans-serif;
+      background: #fff;
     }
-    .loader {
+    .box {
       text-align: center;
     }
     img {
       width: 120px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background: #0d6efd;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <div class="loader">
+  <div class="box">
     <img src="icon-192.png" alt="IUBA Logo">
-    <p>Loading IUBA...</p>
+    <h3>IUBA App</h3>
+    <p>Install the app or continue to website</p>
+    <button onclick="go()">Open Website</button>
   </div>
 
   <script>
@@ -38,10 +51,9 @@
       navigator.serviceWorker.register('service-worker.js');
     }
 
-    // Redirect after short delay
-    setTimeout(() => {
+    function go() {
       window.location.href = "https://iubabd.org/";
-    }, 1500);
+    }
   </script>
 
 </body>
