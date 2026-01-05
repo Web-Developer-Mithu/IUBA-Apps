@@ -2,16 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>IUBA</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IUBA App</title>
 
-  <!-- PWA -->
   <link rel="manifest" href="manifest.json">
-
-  <!-- Icons -->
-  <link rel="icon" href="icon-512.png">
-  <link rel="apple-touch-icon" href="icon-512.png">
+  <meta name="theme-color" content="#0d6efd">
+  <link rel="icon" href="icon-192.png">
 
   <style>
     body {
@@ -20,21 +16,29 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+    .loader {
+      text-align: center;
+    }
+    img {
+      width: 120px;
     }
   </style>
 </head>
 <body>
 
-  <img src="icon-512.png" width="150" alt="IUBA Logo">
+  <div class="loader">
+    <img src="icon-192.png" alt="IUBA Logo">
+    <p>Loading IUBA...</p>
+  </div>
 
   <script>
-    // Service Worker
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js');
     }
 
-    // Redirect to main website
+    // Redirect after short delay
     setTimeout(() => {
       window.location.href = "https://iubabd.org/";
     }, 1500);
