@@ -21,7 +21,6 @@
       background: linear-gradient(135deg, #f5f7fa, #e4ecf7);
     }
 
-    /* Card */
     .card {
       background: #fff;
       width: 90%;
@@ -34,25 +33,13 @@
     }
 
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .card img {
       width: 110px;
       margin-bottom: 15px;
-      animation: pop 0.8s ease;
-    }
-
-    @keyframes pop {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
     }
 
     .card h2 {
@@ -77,6 +64,7 @@
       border-radius: 10px;
       cursor: pointer;
       transition: 0.3s;
+      margin-bottom: 12px;
     }
 
     .primary-btn:hover {
@@ -84,16 +72,20 @@
       box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
     }
 
+    .login-btn {
+      background: linear-gradient(135deg, #198754, #146c43);
+    }
+
+    .login-btn:hover {
+      box-shadow: 0 8px 20px rgba(25, 135, 84, 0.4);
+    }
+
     .secondary-link {
       display: block;
-      margin-top: 15px;
+      margin-top: 10px;
       font-size: 14px;
       color: #0d6efd;
       text-decoration: none;
-    }
-
-    .secondary-link:hover {
-      text-decoration: underline;
     }
 
     .trust {
@@ -102,21 +94,14 @@
       color: #888;
     }
 
-    /* Scrolling text (modern marquee) */
     .ticker {
       width: 100%;
       overflow: hidden;
       margin-top: 25px;
-      background: linear-gradient(
-        90deg,
-        #833ab4,
-        #fd1d1d,
-        #fcb045
-      );
+      background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045);
     }
 
     .ticker p {
-      display: inline-block;
       white-space: nowrap;
       padding: 14px 0;
       font-size: 16px;
@@ -125,12 +110,8 @@
     }
 
     @keyframes scroll {
-      from {
-        transform: translateX(100%);
-      }
-      to {
-        transform: translateX(-100%);
-      }
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
     }
   </style>
 </head>
@@ -141,27 +122,32 @@
     <h2>IUBA App</h2>
     <p>Official Web App • Fast • Secure</p>
 
-    <button class="primary-btn" onclick="go()">Open Website</button>
+    <!-- Open Website -->
+    <button class="primary-btn" onclick="openSite()">Open Website</button>
 
-    <a class="secondary-link" href="#">Install App from browser menu</a>
+    <!-- Login -->
+    <button class="primary-btn login-btn" onclick="login()">Login</button>
+
+    <a class="secondary-link" href="#">
+      Install App from browser menu
+    </a>
 
     <div class="trust">No APK • No Play Store Required</div>
   </div>
 
-  <div class="ticker">
-    <p>
-      IUBA App ইনস্টল করতে ব্রাউজারের “Install App / Add to Home Screen”
-      অপশন ব্যবহার করুন — ধন্যবাদ আমাদের সাথে থাকার জন্য।
-    </p>
-  </div>
+  
 
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js');
     }
 
-    function go() {
+    function openSite() {
       window.location.href = "https://iubabd.org/";
+    }
+
+    function login() {
+      window.location.href = "https://iubabd.org/login";
     }
   </script>
 
