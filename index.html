@@ -14,7 +14,6 @@
       margin: 0;
       height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       font-family: "Segoe UI", Arial, sans-serif;
@@ -29,55 +28,131 @@
       border-radius: 16px;
       text-align: center;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-      animation: fadeUp 0.8s ease;
+      overflow: hidden;
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .card img {
+    /* Logo drop */
+    .logo {
       width: 110px;
       margin-bottom: 15px;
+      animation: drop 1s ease forwards;
     }
 
-    .card h2 {
-      margin: 10px 0 5px;
+    @keyframes drop {
+      from {
+        opacity: 0;
+        transform: translateY(-60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Typing effect */
+    .typing {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid #0d6efd;
+      animation: typing 2.5s steps(30, end), blink 0.6s infinite;
+      margin: auto;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    h2 {
       font-size: 24px;
       color: #222;
+      margin: 10px 0 6px;
     }
 
-    .card p {
+    p {
       font-size: 14px;
       color: #666;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
-    .primary-btn {
+    /* Animated Buttons */
+    .animated-btn {
       width: 100%;
       padding: 14px;
       font-size: 16px;
-      background: linear-gradient(135deg, #0d6efd, #084298);
       color: #fff;
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      transition: 0.3s;
       margin-bottom: 12px;
+      background-size: 300% 300%;
+      opacity: 0;
+      animation:
+        fadeUp 0.8s ease forwards,
+        gradientMove 4s ease infinite,
+        bounce 1.8s infinite;
     }
 
-    .primary-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
+    .open-btn {
+      background-image: linear-gradient(
+        270deg,
+        #0d6efd,
+        #6610f2,
+        #20c997,
+        #0d6efd
+      );
+      animation-delay: 2.8s, 0s, 0s;
+      margin-top: 20px;
     }
 
     .login-btn {
-      background: linear-gradient(135deg, #198754, #146c43);
+      background-image: linear-gradient(
+        270deg,
+        #198754,
+        #ffc107,
+        #fd7e14,
+        #198754
+      );
+      animation-delay: 3.2s, 0s, 0s;
     }
 
-    .login-btn:hover {
-      box-shadow: 0 8px 20px rgba(25, 135, 84, 0.4);
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animated-btn:hover {
+      animation-play-state: paused;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      transform: scale(1.04);
+    }
+
+    .secondary-link,
+    .trust {
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+      animation-delay: 3.6s;
     }
 
     .secondary-link {
@@ -89,53 +164,36 @@
     }
 
     .trust {
-      margin-top: 15px;
+      margin-top: 12px;
       font-size: 12px;
       color: #888;
-    }
-
-    .ticker {
-      width: 100%;
-      overflow: hidden;
-      margin-top: 25px;
-      background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045);
-    }
-
-    .ticker p {
-      white-space: nowrap;
-      padding: 14px 0;
-      font-size: 16px;
-      color: #fff;
-      animation: scroll 18s linear infinite;
-    }
-
-    @keyframes scroll {
-      from { transform: translateX(100%); }
-      to { transform: translateX(-100%); }
     }
   </style>
 </head>
 <body>
 
   <div class="card">
-    <img src="icon-192.png" alt="IUBA Logo">
-    <h2>IUBA App</h2>
-    <p>Official Web App • Fast • Secure</p>
+    <img src="icon-192.png" alt="IUBA Logo" class="logo">
 
-    <!-- Open Website -->
-    <button class="primary-btn" onclick="openSite()">Open Website</button>
+    <h2 class="typing">IUBA App</h2>
+    <p class="typing">Official Web App • Fast • Secure</p>
 
-    <!-- Login -->
-    <button class="primary-btn login-btn" onclick="login()">Login</button>
+    <button class="animated-btn open-btn" onclick="openSite()">
+      Open Website
+    </button>
 
-    <a class="secondary-link" href="IUBA.apk">
+    <button class="animated-btn login-btn" onclick="login()">
+      Login
+    </button>
+
+    <a class="secondary-link" href="#">
       Install App from browser menu
     </a>
 
-    <div class="trust">No APK • No Play Store Required</div>
+    <div class="trust">
+      No APK • No Play Store Required
+    </div>
   </div>
-
-  
 
   <script>
     if ('serviceWorker' in navigator) {
